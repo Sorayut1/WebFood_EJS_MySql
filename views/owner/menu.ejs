@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD เมนูอาหาร</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+    <div class="container mt-4">
+        <h2 class="text-center">📌 ระบบจัดการเมนูอาหาร</h2>
+        <button class="btn btn-success mb-3" onclick="openAddModal()">➕ เพิ่มเมนู</button>
+
+        <table class="table table-bordered">
+            <thead class="table-dark">
+                <tr>
+                    <th>รูปภาพ</th>
+                    <th>ชื่อเมนู</th>
+                    <th>ราคา (฿)</th>
+                    <th>หมวดหมู่</th>
+                    <th>รายละเอียด</th>
+                    <th>จัดการ</th>
+                </tr>
+            </thead>
+            <tbody id="menu-list"></tbody>
+        </table>
+    </div>
+
+    <!-- Modal เพิ่มและแก้ไข -->
+    <div class="modal" id="menuModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 id="modalTitle">เพิ่มเมนู</h5>
+                    <button class="btn-close" onclick="closeModal()"></button>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" id="menu_id">
+                    <label>ชื่อเมนู:</label>
+                    <input type="text" id="menu_name" class="form-control">
+
+                    <label for="menu_image">รูปภาพเมนู:</label>
+                    <input type="file" id="menu_image" name="menu_image" accept=".jpg, .png, .gif" onchange="checkFileSize(this)">
+                    <!-- แสดงชื่อไฟล์ที่ถูกอัปโหลดก่อนหน้านี้ -->
+                    <span id="menu_image_display"></span>
+
+                    <label>ราคา:</label>
+                    <input type="number" id="price" class="form-control">
+                    <label>หมวดหมู่:</label>
+                    <select id="menu_type" class="form-control">
+                        <option value="thai">อาหารไทย</option>
+                        <option value="fastfood">ฟาสต์ฟู้ด</option>
+                        <option value="drink">เครื่องดื่ม</option>
+                        <option value="dessert">ของหวาน</option>
+                    </select>
+                    <label>รายละเอียด:</label>
+                    <textarea id="detail_menu" class="form-control"></textarea>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-danger" onclick="closeModal()">ยกเลิก</button>
+                    <button class="btn btn-primary" id="saveBtn" onclick="saveMenu()">บันทึก</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/manageMenu.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Users List</title>
+</head>
+<body>
+    <h1>Users</h1>
+    <a href="/add">Add User</a>
+    <table border="1">
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Age</th>
+            <th>Actions</th>
+        </tr>
+        <% users.forEach(user => { %>
+            <tr>
+                <td><%= user.name %></td>
+                <td><%= user.email %></td>
+                <td><%= user.age %></td>
+                <td>
+                    <a href="/edit/<%= user.id %>">Edit</a>
+                    <form action="/delete/<%= user.id %>" method="POST" style="display:inline;">
+                        <button type="submit">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        <% }) %>
+    </table>
+</body>
+</html>

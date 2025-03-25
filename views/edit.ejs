@@ -1,0 +1,6 @@
+<form action="/edit/<%= user.id %>" method="POST">
+    <label>Name:</label> <input type="text" name="name" value="<%= user.name %>" required>
+    <label>Email:</label> <input type="email" name="email" value="<%= user.email %>" required>
+    <label>Age:</label> <input type="number" name="age" value="<%= user.age %>" required>
+    <button type="submit">Update User</button>
+</form>
